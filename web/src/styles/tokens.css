@@ -1,0 +1,68 @@
+/* Design tokens — straight from the handoff README.
+   Color semantics are load-bearing: ochre = AI/agent action, cool blue =
+   indoor, warm green = outdoor. The structure anticipates dark mode but we
+   ship light only this round. */
+:root {
+  /* surfaces */
+  --bg-page: #f3efe8;
+  --bg-surface: #ffffff;
+  --bg-surface-warm: #faf7f1;
+  --bg-day-panel: #f8f4ed;
+
+  /* ink */
+  --ink-900: #1b1714;
+  --ink-700: #544c42;
+  --ink-500: #6f665b;
+  --ink-400: #9a9081;
+  --ink-300: #b3a999;
+
+  /* lines */
+  --line: #e6dfd3;
+  --line-soft: #f0eadf;
+  --line-soft-2: #efe8dc;
+  --card-line: #ece5d8;
+
+  /* accent — ochre = AI / agent / primary action */
+  --accent: #cf8400;
+  --accent-ink: #9a6200;
+  --accent-ink-2: #7a5408;
+  --accent-ink-3: #5e3f06;
+  --accent-bg: #f7ead0;
+  --accent-border: #ecd29a;
+
+  /* indoor (cool blue) / outdoor (warm green) */
+  --indoor-fg: #3a5680;
+  --indoor-bg: #e8edf5;
+  --outdoor-fg: #2f6b45;
+  --outdoor-bg: #e6efe7;
+
+  /* success */
+  --success-bg: #eef2ea;
+  --success-border: #cdd9c8;
+  --success-fg: #356043;
+
+  /* weather */
+  --wx-rain-dot: #5b7a99;
+  --wx-rain-fg: #3f5a73;
+  --wx-rain-bg: #eaeef2;
+  --wx-rain-border: #d4dde4;
+  --wx-sun-dot: #cf8400;
+  --wx-sun-fg: #9a6200;
+  --wx-sun-bg: #fbf2dc;
+  --wx-sun-border: #eedfb8;
+
+  /* warn / best-effort */
+  --warn-fg: #b5561f;
+  --warn-bg: #fbeee6;
+  --warn-border: #e9c4ad;
+
+  /* type */
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* radii */
+  --r-card: 6px;
+  --r-panel: 10px;
+  --r-input: 8px;
+  --r-pill: 18px;
+}
