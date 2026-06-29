@@ -1,0 +1,11 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Frontend
+web/node_modules/
+web/dist/
+
+# Local scratch (pip/npm temp redirected to D: during setup)
+/pip-tmp/

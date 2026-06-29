@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  .bwp{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#1b1714}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .ph{width:100%;background:#0e0d0c;border-radius:48px;padding:11px;box-shadow:0 18px 50px rgba(0,0,0,.18)}
+  .scr{background:#f3efe8;border-radius:38px;overflow:hidden;position:relative;height:846px}
+  .sb{height:50px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 28px 9px;position:relative;flex-shrink:0}
+  .notch{position:absolute;left:50%;top:11px;transform:translateX(-50%);width:118px;height:30px;background:#0e0d0c;border-radius:16px}
+  .home{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);width:138px;height:5px;background:#1b1714;border-radius:3px;opacity:.82}
+  .body{height:796px;overflow:hidden;position:relative}
+  .lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:3px 7px;border-radius:4px}
+  .why{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;color:#cf8400;font-weight:600;flex-shrink:0;padding-top:1px}
+  .frameLabel{position:absolute;top:-30px;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(60,50,40,.55)}
+  .sectionH{font-family:'Helvetica Neue',Helvetica,sans-serif;font-weight:600;letter-spacing:-.5px;color:#2c2620}
+  .card{background:#fff;border-radius:6px}
+  .pill{display:flex;align-items:center;gap:6px;border-radius:20px;font-size:11px}
+</style>
+</helmet>
+
+<!-- =================== TITLE =================== -->
+<div style="position:absolute;left:80px;top:50px;width:1000px" class="bwp">
+  <div class="mono" style="font-size:12px;letter-spacing:.18em;color:#cf8400;text-transform:uppercase;margin-bottom:10px">Berlin Weekend Planner · UI System</div>
+  <div style="font-size:40px;font-weight:600;letter-spacing:-1px;line-height:1.05">A planner that shows its thinking.</div>
+  <div style="font-size:15px;color:#6f665b;margin-top:12px;max-width:760px;line-height:1.5">Agentic itinerary planner for a Berlin weekend — reads a free-text request, checks live weather, self-corrects outdoor→indoor on rainy days, validates constraints, and explains every choice. Light mode · tight all-sans Swiss · ochre accent.</div>
+</div>
+
+<!-- =================== MOBILE SECTION =================== -->
+<div style="position:absolute;left:80px;top:230px" class="sectionH" >
+  <span style="font-size:22px">Mobile</span> <span class="mono" style="font-size:13px;color:#9a9081;letter-spacing:.05em">iPhone · 390pt</span>
+</div>
+
+<!-- MOBILE 1 · INPUT -->
+<div style="position:absolute;left:80px;top:320px;width:430px">
+  <div data-drags-parent="1" class="frameLabel">1 · Input / empty</div>
+  <div class="ph"><div class="scr bwp">
+    <div class="sb"><span style="font-size:14px;font-weight:600">9:41</span><div class="notch"></div><span class="mono" style="font-size:11px;font-weight:600">100%</span></div>
+    <div class="body" style="padding:8px 22px 0">
+      <div class="mono" style="font-size:10px;letter-spacing:.16em;color:#cf8400;text-transform:uppercase;margin:6px 0 16px">AI itinerary agent</div>
+      <div style="font-size:30px;font-weight:600;letter-spacing:-.8px;line-height:1.05">Tell me your weekend.</div>
+      <div style="font-size:14px;color:#6f665b;line-height:1.5;margin-top:12px">I'll plan it, check the weather, and show every decision.</div>
+      <div class="card" style="border:1px solid #e6dfd3;margin-top:22px;padding:16px">
+        <div style="font-size:15px;color:#b3a999;line-height:1.5;min-height:88px">Plan my Saturday 4 July 2026 — I like museums and lakes, max 3 things, avoid repeats…</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;border-top:1px solid #f0eadf;padding-top:12px">
+          <span class="pill" style="background:#f7ead0;border:1px solid #ecd29a;color:#9a6200;padding:6px 11px"><span style="width:6px;height:6px;border-radius:50%;background:#cf8400"></span>Sat–Sun 4–5 Jul</span>
+          <span class="pill" style="background:#f7ead0;border:1px solid #ecd29a;color:#9a6200;padding:6px 11px"><span style="width:6px;height:6px;border-radius:50%;background:#cf8400"></span>Indoor-friendly</span>
+          <span class="pill" style="background:#fff;border:1px solid #e0d6c5;color:#6f665b;padding:6px 11px"><span style="width:6px;height:6px;border-radius:50%;background:#cdc3b3"></span>Mitte</span>
+          <span class="pill" style="background:#f7ead0;border:1px solid #ecd29a;color:#9a6200;padding:6px 11px"><span style="width:6px;height:6px;border-radius:50%;background:#cf8400"></span>Max 3 / day</span>
+        </div>
+      </div>
+      <button style="margin-top:14px;width:100%;background:#cf8400;color:#fff;border:none;border-radius:10px;padding:15px;font-size:16px;font-weight:600;font-family:inherit">Plan my weekend  →</button>
+      <div class="mono" style="text-align:center;font-size:11px;color:#9a9081;margin-top:14px">Live weather · self-correcting</div>
+    </div>
+    <div class="home"></div>
+  </div></div>
+</div>
+
+<!-- MOBILE 2 · THINKING -->
+<div style="position:absolute;left:560px;top:320px;width:430px">
+  <div data-drags-parent="1" class="frameLabel">2 · Agent thinking</div>
+  <div class="ph"><div class="scr bwp">
+    <div class="sb"><span style="font-size:14px;font-weight:600">9:41</span><div class="notch"></div><span class="mono" style="font-size:11px;font-weight:600">100%</span></div>
+    <div class="body" style="padding:8px 22px 0">
+      <div style="display:flex;align-items:center;gap:8px;margin:10px 0 14px"><span style="width:7px;height:7px;border-radius:50%;background:#cf8400"></span><span class="mono" style="font-size:10px;letter-spacing:.14em;color:#cf8400;text-transform:uppercase">Agent working · ReAct loop</span></div>
+      <div class="mono" style="font-size:12px;color:#6f665b;line-height:1.5;background:#faf7f1;border:1px solid #e6dfd3;border-radius:8px;padding:12px 13px">“Plan my weekend 4–5 Jul, museums + lakes, max 3/day, no repeats…”</div>
+      <div style="margin-top:22px">
+        <!-- step done -->
+        <div style="display:grid;grid-template-columns:20px 1fr;gap:13px;padding-bottom:18px">
+          <div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;background:#2f6b45;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px">✓</div><div style="width:2px;flex:1;background:#cdd9c8;margin-top:4px"></div></div>
+          <div><div style="font-size:15px;font-weight:600">Parsing your request</div><div class="mono" style="font-size:11px;color:#6f665b;margin-top:4px;line-height:1.45">museums + lakes · max 3/day · no repeats</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:20px 1fr;gap:13px;padding-bottom:18px">
+          <div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;background:#2f6b45;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px">✓</div><div style="width:2px;flex:1;background:#cdd9c8;margin-top:4px"></div></div>
+          <div><div style="font-size:15px;font-weight:600">Checking live weather</div><div class="mono" style="font-size:11px;color:#6f665b;margin-top:4px;line-height:1.45">Sat → 70% rain, 18° · Sun → sunny, 26°</div></div>
+        </div>
+        <!-- active -->
+        <div style="display:grid;grid-template-columns:20px 1fr;gap:13px;padding-bottom:18px">
+          <div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;border:2px solid #cf8400;background:#cf8400"></div><div style="width:2px;flex:1;background:#e6dfd3;margin-top:4px"></div></div>
+          <div><div style="font-size:15px;font-weight:600">Finding indoor alternatives</div><div class="mono" style="font-size:11px;color:#6f665b;margin-top:4px;line-height:1.45">Schlachtensee → Sea Life Berlin (Sat PM)</div></div>
+        </div>
+        <!-- pending -->
+        <div style="display:grid;grid-template-columns:20px 1fr;gap:13px;padding-bottom:18px;opacity:.4">
+          <div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;border:2px solid #d8cfc0"></div><div style="width:2px;flex:1;background:#e6dfd3;margin-top:4px"></div></div>
+          <div><div style="font-size:15px;font-weight:600;color:#9a9081">Validating constraints</div><div class="mono" style="font-size:11px;color:#9a9081;margin-top:4px">3/3 per day · no repeats · events dated</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:20px 1fr;gap:13px;opacity:.4">
+          <div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;border:2px solid #d8cfc0"></div></div>
+          <div><div style="font-size:15px;font-weight:600;color:#9a9081">Fixing 1 issue</div><div class="mono" style="font-size:11px;color:#9a9081;margin-top:4px">Sat eve was a 2nd museum → market</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="home"></div>
+  </div></div>
+</div>
+
+<!-- MOBILE 3 · ITINERARY -->
+<div style="position:absolute;left:1040px;top:320px;width:430px">
+  <div data-drags-parent="1" class="frameLabel">3 · Itinerary result</div>
+  <div class="ph"><div class="scr bwp">
+    <div class="sb"><span style="font-size:14px;font-weight:600">9:41</span><div class="notch"></div><span class="mono" style="font-size:11px;font-weight:600">100%</span></div>
+    <div class="body" style="padding:6px 0 0">
+      <div style="padding:0 20px">
+        <div style="display:flex;gap:6px;background:#e9e2d6;border-radius:9px;padding:4px">
+          <div style="flex:1;text-align:center;background:#fff;border-radius:6px;padding:8px;font-size:13px;font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.05)">Saturday</div>
+          <div style="flex:1;text-align:center;padding:8px;font-size:13px;color:#6f665b">Sunday</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#eaeef2;border:1px solid #d4dde4;border-radius:8px;padding:11px 13px;margin-top:12px">
+          <div><div style="font-size:14px;font-weight:600">4 July</div><div class="mono" style="font-size:10px;color:#6f665b">Heavy showers</div></div>
+          <div style="display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:#5b7a99"></span><span class="mono" style="font-size:11px;color:#3f5a73">70% RAIN · 18°</span></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+          <span class="pill mono" style="background:#eef2ea;border:1px solid #cdd9c8;color:#356043;padding:5px 9px;font-size:10px">✓ 3/3 PER DAY</span>
+          <span class="pill mono" style="background:#eef2ea;border:1px solid #cdd9c8;color:#356043;padding:5px 9px;font-size:10px">✓ NO REPEATS</span>
+          <span class="pill mono" style="background:#f7ead0;border:1px solid #ecd29a;color:#9a6200;padding:5px 9px;font-size:10px">↺ 1 SWAP</span>
+        </div>
+      </div>
+      <div style="padding:14px 20px;display:flex;flex-direction:column;gap:11px">
+        <!-- card 1 -->
+        <div class="card" style="border:1px solid #ece5d8;border-left:3px solid #e6dfd3;padding:13px 14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px"><span class="mono" style="font-size:10px;letter-spacing:.08em;color:#9a9081">MORNING · 09:30</span><span class="lbl" style="background:#e8edf5;color:#3a5680">Indoor</span></div>
+          <div style="font-size:16px;font-weight:600;letter-spacing:-.2px">Pergamonmuseum</div>
+          <div class="mono" style="font-size:11px;color:#6f665b;margin:4px 0 9px">Museum · Mitte · 10:00–18:00</div>
+          <div style="display:flex;gap:7px;border-top:1px solid #f0eadf;padding-top:8px"><span class="why">WHY</span><span style="font-size:12px;color:#544c42;line-height:1.45">Antiquities under a roof — the right anchor for a wet morning.</span></div>
+        </div>
+        <!-- swap callout -->
+        <div style="display:flex;gap:8px;background:#f7ead0;border:1px solid #ecd29a;border-radius:7px;padding:9px 11px"><span class="mono" style="color:#cf8400;font-weight:600;font-size:13px">↺</span><div style="font-size:11.5px;line-height:1.45;color:#7a5408"><b style="color:#5e3f06">Weather swap.</b> Schlachtensee (lake) → Sea Life Berlin. Your lake moves to sunny Sunday.</div></div>
+        <!-- card 2 swapped -->
+        <div class="card" style="border:1px solid #ece5d8;border-left:3px solid #cf8400;padding:13px 14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px"><span class="mono" style="font-size:10px;letter-spacing:.08em;color:#9a9081">AFTERNOON · 14:00</span><span class="lbl" style="background:#e8edf5;color:#3a5680">Indoor</span></div>
+          <div style="font-size:16px;font-weight:600;letter-spacing:-.2px">Sea Life Berlin</div>
+          <div class="mono" style="font-size:11px;color:#6f665b;margin:4px 0 9px">Aquarium · Mitte · 10:00–19:00</div>
+          <div style="display:flex;gap:7px;border-top:1px solid #f0eadf;padding-top:8px"><span class="why">WHY</span><span style="font-size:12px;color:#544c42;line-height:1.45">Indoor stand-in for your lake — keeps the water, loses the rain.</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(243,239,232,.92);backdrop-filter:blur(6px);border-top:1px solid #e6dfd3;padding:13px 20px 26px;display:flex;gap:9px;align-items:center"><div style="flex:1;background:#fff;border:1px solid #e0d6c5;border-radius:9px;padding:11px 13px;font-size:13px;color:#9a9081">Refine your plan…</div><button style="width:42px;height:42px;border:none;border-radius:9px;background:#1b1714;color:#fff;font-family:'IBM Plex Mono',monospace">→</button></div>
+    <div class="home"></div>
+  </div></div>
+</div>
+
+<!-- MOBILE 4 · REFINE -->
+<div style="position:absolute;left:1520px;top:320px;width:430px">
+  <div data-drags-parent="1" class="frameLabel">4 · Refine / replan</div>
+  <div class="ph"><div class="scr bwp">
+    <div class="sb"><span style="font-size:14px;font-weight:600">9:41</span><div class="notch"></div><span class="mono" style="font-size:11px;font-weight:600">100%</span></div>
+    <div class="body">
+      <!-- dimmed itinerary behind -->
+      <div style="padding:10px 20px;opacity:.45;filter:saturate(.8)">
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#fbf2dc;border:1px solid #eedfb8;border-radius:8px;padding:11px 13px"><div style="font-size:14px;font-weight:600">5 July · Sunday</div><span class="mono" style="font-size:11px;color:#9a6200">SUNNY · 26°</span></div>
+        <div class="card" style="border:1px solid #ece5d8;border-left:3px solid #2f6b45;padding:12px 14px;margin-top:10px"><div style="display:flex;justify-content:space-between"><span class="mono" style="font-size:10px;color:#9a9081">EVENING · 21:30</span><span class="lbl" style="background:#e6efe7;color:#2f6b45">Outdoor</span></div><div style="font-size:15px;font-weight:600;margin-top:6px">Freiluftkino Friedrichshain</div></div>
+      </div>
+      <!-- bottom sheet chat -->
+      <div style="position:absolute;bottom:0;left:0;right:0;background:#fff;border-radius:22px 22px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.12);padding:14px 20px 26px;height:560px;display:flex;flex-direction:column">
+        <div style="width:40px;height:4px;background:#e0d6c5;border-radius:2px;margin:0 auto 14px"></div>
+        <div class="mono" style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#1b1714;font-weight:600;margin-bottom:14px">Refine your plan</div>
+        <div style="flex:1;overflow:hidden;display:flex;flex-direction:column;gap:10px">
+          <div style="align-self:flex-end;max-width:80%;background:#1b1714;color:#fff;font-size:13px;line-height:1.5;padding:10px 13px;border-radius:14px">Make it cheaper</div>
+          <div style="align-self:flex-start;max-width:86%;background:#faf7f1;border:1px solid #e6dfd3;font-size:13px;line-height:1.5;padding:10px 13px;border-radius:14px">Done — swapped the €55 Waldbühne concert for an open-air cinema (€9.50). Weekend total drops to ~€56/person.</div>
+          <div style="align-self:flex-end;max-width:80%;background:#1b1714;color:#fff;font-size:13px;line-height:1.5;padding:10px 13px;border-radius:14px">Swap Sunday afternoon</div>
+          <div style="align-self:flex-start;max-width:86%;background:#faf7f1;border:1px solid #e6dfd3;font-size:13px;line-height:1.5;padding:10px 13px;border-radius:14px">Swapped to Badeschiff — kept it outdoor and checked it doesn't repeat the lake. <span class="mono" style="color:#2f6b45">✎ updated</span></div>
+        </div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 10px">
+          <span style="font-size:12px;padding:7px 11px;border:1px solid #e0d6c5;border-radius:15px;color:#6f665b">More outdoor</span>
+          <span style="font-size:12px;padding:7px 11px;border:1px solid #e0d6c5;border-radius:15px;color:#6f665b">Earlier start</span>
+        </div>
+        <div style="display:flex;gap:8px"><div style="flex:1;background:#faf7f1;border:1px solid #e0d6c5;border-radius:9px;padding:11px 13px;font-size:13px;color:#9a9081">Ask for a change…</div><button style="width:42px;border:none;border-radius:9px;background:#cf8400;color:#fff;font-family:'IBM Plex Mono',monospace">→</button></div>
+      </div>
+    </div>
+    <div class="home"></div>
+  </div></div>
+</div>
+
+<!-- MOBILE 5 · EDGE -->
+<div style="position:absolute;left:2000px;top:320px;width:430px">
+  <div data-drags-parent="1" class="frameLabel">5 · Edge · best effort</div>
+  <div class="ph"><div class="scr bwp">
+    <div class="sb"><span style="font-size:14px;font-weight:600">9:41</span><div class="notch"></div><span class="mono" style="font-size:11px;font-weight:600">100%</span></div>
+    <div class="body" style="padding:8px 20px 0">
+      <div style="background:#fbeee6;border:1px solid #e9c4ad;border-radius:9px;padding:13px 14px;margin-top:8px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span class="mono" style="color:#b5561f;font-weight:600">!</span><span class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#b5561f;font-weight:600">Best effort · 2 of 3 met</span></div>
+        <div style="font-size:13px;line-height:1.5;color:#7a4a30">I built the closest plan I could, but couldn't fully satisfy everything. Here's what's honest about it:</div>
+      </div>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:9px;background:#fff;border:1px solid #ece5d8;border-radius:8px;padding:12px 13px"><span class="mono" style="color:#b5561f;font-weight:600;font-size:13px">✕</span><div><div style="font-size:13px;font-weight:600">No budget dinner found</div><div class="mono" style="font-size:11px;color:#6f665b;margin-top:3px;line-height:1.45">No indoor dinner under €15 in Treptow on Sat. Showing nearest: Freischwimmer (€18).</div></div></div>
+        <div style="display:flex;gap:9px;background:#fff;border:1px solid #ece5d8;border-radius:8px;padding:12px 13px"><span class="mono" style="color:#cf8400;font-weight:600;font-size:13px">↺</span><div><div style="font-size:13px;font-weight:600">Waldbühne sold out</div><div class="mono" style="font-size:11px;color:#6f665b;margin-top:3px;line-height:1.45">Suggested Freiluftkino instead — same evening, outdoor, €9.50.</div></div></div>
+        <div style="display:flex;gap:9px;background:#fff;border:1px solid #ece5d8;border-radius:8px;padding:12px 13px"><span class="mono" style="color:#2f6b45;font-weight:600;font-size:13px">✓</span><div><div style="font-size:13px;font-weight:600">Everything else holds</div><div class="mono" style="font-size:11px;color:#6f665b;margin-top:3px;line-height:1.45">Weather-checked · no repeated types · dated events on the right day.</div></div></div>
+      </div>
+      <div style="display:flex;gap:9px;margin-top:16px"><button style="flex:1;background:#1b1714;color:#fff;border:none;border-radius:9px;padding:13px;font-size:14px;font-weight:600;font-family:inherit">Relax budget</button><button style="flex:1;background:#fff;color:#1b1714;border:1px solid #e0d6c5;border-radius:9px;padding:13px;font-size:14px;font-weight:600;font-family:inherit">Keep best effort</button></div>
+    </div>
+    <div class="home"></div>
+  </div></div>
+</div>
+
+<!-- post-it -->
+<div style="position:absolute;left:2000px;top:1200px;width:240px;background:#fef4a8;padding:14px 16px;font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#5b5320;box-shadow:0 2px 8px rgba(0,0,0,.1);transform:rotate(-1.4deg)">The edge state never hides failure — it names each unmet constraint and offers a concrete next move.</div>
+
+<!-- =================== DESKTOP SECTION =================== -->
+<div style="position:absolute;left:80px;top:1300px" class="sectionH">
+  <span style="font-size:22px">Desktop</span> <span class="mono" style="font-size:13px;color:#9a9081;letter-spacing:.05em">Web · 1440px</span>
+</div>
+
+<!-- DESKTOP · ITINERARY -->
+<div style="position:absolute;left:80px;top:1390px;width:1180px">
+  <div data-drags-parent="1" class="frameLabel">Desktop · itinerary result</div>
+  <div class="card bwp" style="box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden;border-radius:10px">
+    <div style="background:#f3efe8;padding:20px 28px;border-bottom:1px solid #e6dfd3;display:flex;align-items:center;gap:12px">
+      <div style="width:26px;height:26px;background:#cf8400;border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600" class="mono">B</div>
+      <span style="font-weight:600;font-size:15px">Berlin Weekend Planner</span>
+      <span class="mono" style="margin-left:auto;font-size:11px;letter-spacing:.1em;color:#6f665b">SAT–SUN · 4–5 JUL 2026</span>
+    </div>
+    <div style="padding:24px 28px 30px;background:#f3efe8">
+      <div class="mono" style="font-size:11px;letter-spacing:.14em;color:#cf8400;text-transform:uppercase;margin-bottom:8px">Your weekend itinerary</div>
+      <div style="font-size:15px;color:#6f665b">“Plan my weekend 4–5 July 2026. Museums and lakes, max 3 things per day, no repeated types, avoid repeats.”</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 22px">
+        <span class="pill mono" style="background:#eef2ea;border:1px solid #cdd9c8;color:#356043;padding:7px 13px">✓ 3 / 3 PER DAY</span>
+        <span class="pill mono" style="background:#eef2ea;border:1px solid #cdd9c8;color:#356043;padding:7px 13px">✓ NO REPEATED TYPES</span>
+        <span class="pill mono" style="background:#eef2ea;border:1px solid #cdd9c8;color:#356043;padding:7px 13px">✓ ALL WEATHER-CHECKED</span>
+        <span class="pill mono" style="background:#f7ead0;border:1px solid #ecd29a;color:#9a6200;padding:7px 13px">↺ 1 WEATHER SWAP</span>
+        <span class="pill mono" style="background:#fff;border:1px solid #e6dfd3;color:#6f665b;padding:7px 13px">€ ≈ €104 / PERSON</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 320px;gap:18px;align-items:start">
+        <!-- SAT -->
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 15px;background:#eaeef2;border:1px solid #d4dde4;border-bottom:none;border-radius:8px 8px 0 0"><div><div style="font-size:18px;font-weight:600">Saturday</div><div class="mono" style="font-size:10px;color:#6f665b">4 JULY 2026</div></div><div style="display:flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:#5b7a99"></span><span class="mono" style="font-size:11px;color:#3f5a73">70% RAIN · 18°</span></div></div>
+          <div style="border:1px solid #d4dde4;border-top:none;border-radius:0 0 8px 8px;padding:13px;background:#f8f4ed;display:flex;flex-direction:column;gap:11px">
+            <div class="card" style="border:1px solid #ece5d8;border-left:3px solid #e6dfd3;padding:12px 14px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="mono" style="font-size:10px;color:#9a9081">MORNING · 09:30</span><span class="lbl" style="background:#e8edf5;color:#3a5680">Indoor</span></div><div style="font-size:16px;font-weight:600">Pergamonmuseum</div><div class="mono" style="font-size:11px;color:#6f665b;margin:3px 0 8px">Museum · Mitte · 10:00–18:00</div><div style="display:flex;gap:7px;border-top:1px solid #f0eadf;padding-top:7px"><span class="why">WHY</span><span style="font-size:12px;color:#544c42;line-height:1.45">Antiquities under a roof — a perfect dry-day anchor.</span></div></div>
+            <div style="display:flex;gap:8px;background:#f7ead0;border:1px solid #ecd29a;border-radius:7px;padding:9px 11px"><span class="mono" style="color:#cf8400;font-weight:600">↺</span><div style="font-size:11.5px;line-height:1.4;color:#7a5408"><b style="color:#5e3f06">Weather swap.</b> Schlachtensee → Sea Life Berlin.</div></div>
+            <div class="card" style="border:1px solid #ece5d8;border-left:3px solid #cf8400;padding:12px 14px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="mono" style="font-size:10px;color:#9a9081">AFTERNOON · 14:00</span><span class="lbl" style="background:#e8edf5;color:#3a5680">Indoor</span></div><div style="font-size:16px;font-weight:600">Sea Life Berlin</div><div class="mono" style="font-size:11px;color:#6f665b;margin:3px 0 8px">Aquarium · Mitte · 10:00–19:00</div><div style="display:flex;gap:7px;border-top:1px solid #f0eadf;padding-top:7px"><span class="why">WHY</span><span style="font-size:12px;color:#544c42;line-height:1.45">Keeps the water theme, loses the rain.</span></div></div>
+            <div class="card" style="border:1px solid #ece5d8;border-left:3px solid #e6dfd3;padding:12px 14px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="mono" style="font-size:10px;color:#9a9081">EVENING · 19:00</span><span class="lbl" style="background:#e8edf5;color:#3a5680">Indoor</span></div><div style="font-size:16px;font-weight:600">Markthalle Neun</div><div class="mono" style="font-size:11px;color:#6f665b;margin:3px 0 8px">Food market · Kreuzberg · til 22:00</div><div style="display:flex;gap:7px;border-top:1px solid #f0eadf;padding-top:7px"><span class="why">WHY</span><span style="font-size:12px;color:#544c42;line-height:1.45">Covered street-food hall — a dinner that stays dry.</span></div></div>
+          </div>
+        </div>
+        <!-- SUN -->
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 15px;background:#fbf2dc;border:1px solid #eedfb8;border-bottom:none;border-radius:8px 8px 0 0"><div><div style="font-size:18px;font-weight:600">Sunday</div><div class="mono" style="font-size:10px;color:#6f665b">5 JULY 2026</div></div><div style="display:flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:#cf8400"></span><span class="mono" style="font-size:11px;color:#9a6200">SUNNY · 26°</span></div></div>
+          <div style="border:1px solid #eedfb8;border-top:none;border-radius:0 0 8px 8px;padding:13px;background:#f8f4ed;display:flex;flex-direction:column;gap:11px">
+            <div class="card" style="border:1px solid #ece5d8;border-left:3px solid #e6dfd3;padding:12px 14px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="mono" style="font-size:10px;color:#9a9081">MORNING · 10:00</span><span class="lbl" style="background:#e6efe7;color:#2f6b45">Outdoor</span></div><div style="font-size:16px;font-weight:600">Schlachtensee</div><div class="mono" style="font-size:11px;color:#6f665b;margin:3px 0 8px">Lake · Zehlendorf · best 10–16h</div><div style="display:flex;gap:7px;border-top:1px solid #f0eadf;padding-top:7px"><span class="why">WHY</span><span style="font-size:12px;color:#544c42;line-height:1.45">Your lake — saved for Sunday's sun.</span></div></div>
+            <div class="card" style="border:1px solid #ece5d8;border-left:3px solid #e6dfd3;padding:12px 14px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="mono" style="font-size:10px;color:#9a9081">AFTERNOON · 14:30</span><span class="lbl" style="background:#e6efe7;color:#2f6b45">Outdoor</span></div><div style="font-size:16px;font-weight:600">Tempelhofer Feld</div><div class="mono" style="font-size:11px;color:#6f665b;margin:3px 0 8px">Park · Tempelhof · sunrise–sunset</div><div style="display:flex;gap:7px;border-top:1px solid #f0eadf;padding-top:7px"><span class="why">WHY</span><span style="font-size:12px;color:#544c42;line-height:1.45">Old airfield to cycle and picnic — big open sky.</span></div></div>
+            <div class="card" style="border:1px solid #ece5d8;border-left:3px solid #e6dfd3;padding:12px 14px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="mono" style="font-size:10px;color:#9a9081">EVENING · 20:00</span><span class="lbl" style="background:#e6efe7;color:#2f6b45">Outdoor</span></div><div style="font-size:16px;font-weight:600">Waldbühne Open-Air</div><div class="mono" style="font-size:11px;color:#6f665b;margin:3px 0 8px">Concert · Westend · 5 Jul 20:00</div><div style="display:flex;gap:7px;border-top:1px solid #f0eadf;padding-top:7px"><span class="why">WHY</span><span style="font-size:12px;color:#544c42;line-height:1.45">Dated open-air show — placed on its real date.</span></div></div>
+          </div>
+        </div>
+        <!-- AGENT PANEL -->
+        <div class="card" style="border:1px solid #e6dfd3;overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid #efe8dc;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;border-radius:50%;background:#2f6b45"></span><span class="mono" style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600">Agent log</span><span class="mono" style="margin-left:auto;font-size:10px;color:#9a9081">7 steps</span></div>
+          <div style="padding:12px 16px">
+            <div style="display:flex;gap:9px;padding:4px 0"><span style="color:#2f6b45" class="mono">✓</span><div><span style="font-size:13px;font-weight:500">Parsing your request</span></div></div>
+            <div style="display:flex;gap:9px;padding:4px 0"><span style="color:#2f6b45" class="mono">✓</span><div><span style="font-size:13px;font-weight:500">Checking live weather</span><span class="mono" style="font-size:11px;color:#9a9081;display:block">Sat 70% rain · Sun sunny</span></div></div>
+            <div style="display:flex;gap:9px;padding:4px 0"><span style="color:#2f6b45" class="mono">✓</span><div><span style="font-size:13px;font-weight:500">Finding indoor alternatives</span><span class="mono" style="font-size:11px;color:#9a9081;display:block">Schlachtensee → Sea Life</span></div></div>
+            <div style="display:flex;gap:9px;padding:4px 0"><span style="color:#2f6b45" class="mono">✓</span><div><span style="font-size:13px;font-weight:500">Validating constraints</span></div></div>
+            <div style="display:flex;gap:9px;padding:4px 0"><span style="color:#2f6b45" class="mono">✓</span><div><span style="font-size:13px;font-weight:500">Fixing 1 issue</span><span class="mono" style="font-size:11px;color:#9a9081;display:block">Sat eve museum×2 → market</span></div></div>
+          </div>
+          <div style="padding:14px 16px;border-top:1px solid #efe8dc;background:#faf7f1">
+            <div class="mono" style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:10px">Refine</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px"><span style="font-size:12px;padding:6px 11px;border:1px solid #e0d6c5;border-radius:15px;color:#6f665b;background:#fff">Make it cheaper</span><span style="font-size:12px;padding:6px 11px;border:1px solid #e0d6c5;border-radius:15px;color:#6f665b;background:#fff">More outdoor</span></div>
+            <div style="display:flex;gap:7px"><div style="flex:1;background:#fff;border:1px solid #e0d6c5;border-radius:8px;padding:9px 11px;font-size:13px;color:#9a9081">Ask for a change…</div><button style="width:38px;border:none;border-radius:8px;background:#1b1714;color:#fff" class="mono">→</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DESKTOP · THINKING -->
+<div style="position:absolute;left:1320px;top:1390px;width:540px">
+  <div data-drags-parent="1" class="frameLabel">Desktop · agent thinking</div>
+  <div class="card bwp" style="box-shadow:0 4px 24px rgba(0,0,0,.08);border-radius:10px;overflow:hidden">
+    <div style="background:#f3efe8;padding:20px 28px;border-bottom:1px solid #e6dfd3;display:flex;align-items:center;gap:12px"><div style="width:26px;height:26px;background:#cf8400;border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600" class="mono">B</div><span style="font-weight:600;font-size:15px">Berlin Weekend Planner</span></div>
+    <div style="padding:28px;background:#f3efe8">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px"><span style="width:7px;height:7px;border-radius:50%;background:#cf8400"></span><span class="mono" style="font-size:11px;letter-spacing:.14em;color:#cf8400;text-transform:uppercase">Agent working · ReAct loop</span></div>
+      <div class="mono" style="font-size:13px;color:#6f665b;background:#faf7f1;border:1px solid #e6dfd3;border-radius:8px;padding:13px 15px;line-height:1.5;margin-bottom:26px">“Plan my weekend 4–5 Jul, museums + lakes, max 3/day, no repeats…”</div>
+      <div>
+        <div style="display:grid;grid-template-columns:24px 1fr;gap:15px;padding-bottom:20px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;background:#2f6b45;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px">✓</div><div style="width:2px;flex:1;background:#cdd9c8;margin-top:4px"></div></div><div><div style="font-size:16px;font-weight:600">Parsing your request</div><div class="mono" style="font-size:12px;color:#6f665b;margin-top:4px">museums + lakes · max 3/day · no repeated types</div></div></div>
+        <div style="display:grid;grid-template-columns:24px 1fr;gap:15px;padding-bottom:20px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;background:#2f6b45;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px">✓</div><div style="width:2px;flex:1;background:#cdd9c8;margin-top:4px"></div></div><div><div style="font-size:16px;font-weight:600">Checking live weather</div><div class="mono" style="font-size:12px;color:#6f665b;margin-top:4px">Sat → 70% rain, 18° · Sun → sunny, 26°</div></div></div>
+        <div style="display:grid;grid-template-columns:24px 1fr;gap:15px;padding-bottom:20px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;background:#cf8400;border:2px solid #cf8400"></div><div style="width:2px;flex:1;background:#e6dfd3;margin-top:4px"></div></div><div><div style="font-size:16px;font-weight:600">Finding indoor alternatives</div><div class="mono" style="font-size:12px;color:#6f665b;margin-top:4px">Schlachtensee (lake) → Sea Life Berlin (Sat PM)</div></div></div>
+        <div style="display:grid;grid-template-columns:24px 1fr;gap:15px;padding-bottom:20px;opacity:.4"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;border:2px solid #d8cfc0"></div><div style="width:2px;flex:1;background:#e6dfd3;margin-top:4px"></div></div><div><div style="font-size:16px;font-weight:600;color:#9a9081">Validating constraints</div><div class="mono" style="font-size:12px;color:#9a9081;margin-top:4px">3/3 per day · no repeats · events dated</div></div></div>
+        <div style="display:grid;grid-template-columns:24px 1fr;gap:15px;opacity:.4"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;border-radius:50%;border:2px solid #d8cfc0"></div></div><div><div style="font-size:16px;font-weight:600;color:#9a9081">Fixing 1 issue</div><div class="mono" style="font-size:12px;color:#9a9081;margin-top:4px">Sat evening was a 2nd museum → market</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== VARIATIONS =================== -->
+<div style="position:absolute;left:80px;top:2330px" class="sectionH">
+  <span style="font-size:22px">Variations</span> <span class="mono" style="font-size:13px;color:#9a9081;letter-spacing:.05em">to mix & match</span>
+</div>
+
+<!-- TIMELINE A -->
+<div style="position:absolute;left:80px;top:2420px;width:300px">
+  <div data-drags-parent="1" class="frameLabel">Timeline A · vertical (default)</div>
+  <div class="card bwp" style="box-shadow:0 4px 24px rgba(0,0,0,.08);padding:22px;background:#f3efe8;border:1px solid #e6dfd3">
+    <div class="mono" style="font-size:10px;color:#cf8400;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px">Agent working</div>
+    <div style="display:grid;grid-template-columns:18px 1fr;gap:12px;padding-bottom:16px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:16px;height:16px;border-radius:50%;background:#2f6b45;color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px">✓</div><div style="width:2px;flex:1;background:#cdd9c8;margin-top:3px"></div></div><div style="font-size:14px;font-weight:600">Checking weather</div></div>
+    <div style="display:grid;grid-template-columns:18px 1fr;gap:12px;padding-bottom:16px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:16px;height:16px;border-radius:50%;background:#cf8400"></div><div style="width:2px;flex:1;background:#e6dfd3;margin-top:3px"></div></div><div style="font-size:14px;font-weight:600">Finding alternatives</div></div>
+    <div style="display:grid;grid-template-columns:18px 1fr;gap:12px;opacity:.4"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:16px;height:16px;border-radius:50%;border:2px solid #d8cfc0"></div></div><div style="font-size:14px;font-weight:600;color:#9a9081">Validating</div></div>
+  </div>
+</div>
+
+<!-- TIMELINE B · terminal -->
+<div style="position:absolute;left:440px;top:2420px;width:460px">
+  <div data-drags-parent="1" class="frameLabel">Timeline B · agent trace (mono)</div>
+  <div style="box-shadow:0 4px 24px rgba(0,0,0,.12);border-radius:10px;overflow:hidden;background:#16140f">
+    <div style="display:flex;align-items:center;gap:7px;padding:11px 16px;border-bottom:1px solid #2a2720"><span style="width:9px;height:9px;border-radius:50%;background:#cf8400"></span><span class="mono" style="font-size:11px;color:#cf8400;letter-spacing:.1em">agent.plan() — live trace</span></div>
+    <div class="mono" style="padding:16px;font-size:12.5px;line-height:1.85;color:#cfc7b8">
+      <div><span style="color:#5f8f6f">✓</span> <span style="color:#8a8270">parse</span>&nbsp;&nbsp;&nbsp;&nbsp;date=4–5 Jul interests=[museum,lake]</div>
+      <div><span style="color:#5f8f6f">✓</span> <span style="color:#8a8270">weather</span>&nbsp;&nbsp;sat=rain(0.70) sun=clear</div>
+      <div><span style="color:#cf8400">→</span> <span style="color:#8a8270">reason</span>&nbsp;&nbsp;&nbsp;sat wet ⇒ prefer indoor, lake→sun</div>
+      <div><span style="color:#5f8f6f">✓</span> <span style="color:#8a8270">swap</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Schlachtensee → Sea Life Berlin</div>
+      <div><span style="color:#5f8f6f">✓</span> <span style="color:#8a8270">validate</span>&nbsp;3/3 · no-repeats · dated-ok</div>
+      <div><span style="color:#d99a2b">!</span> <span style="color:#8a8270">fix</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sat.eve museum×2 ⇒ market</div>
+      <div style="color:#5f8f6f;margin-top:6px">done · 6 stops · 2 days <span style="background:#cf8400;display:inline-block;width:8px;height:15px;vertical-align:-3px;margin-left:2px"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD A -->
+<div style="position:absolute;left:960px;top:2420px;width:300px">
+  <div data-drags-parent="1" class="frameLabel">Venue card A · text-led</div>
+  <div class="card bwp" style="box-shadow:0 4px 24px rgba(0,0,0,.08);border:1px solid #ece5d8;border-left:3px solid #cf8400;padding:16px 18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px"><span class="mono" style="font-size:10px;color:#9a9081">AFTERNOON · 14:00</span><span class="lbl" style="background:#e8edf5;color:#3a5680">Indoor</span></div>
+    <div style="font-size:18px;font-weight:600;letter-spacing:-.3px">Sea Life Berlin</div>
+    <div class="mono" style="font-size:11px;color:#6f665b;margin:5px 0 11px">Aquarium · Mitte · 10:00–19:00</div>
+    <div style="display:flex;gap:8px;border-top:1px solid #f0eadf;padding-top:10px"><span class="why">WHY</span><span style="font-size:13px;color:#544c42;line-height:1.5">Indoor stand-in for your lake — keeps the water, loses the rain.</span></div>
+  </div>
+</div>
+
+<!-- CARD B · image-led -->
+<div style="position:absolute;left:1320px;top:2420px;width:300px">
+  <div data-drags-parent="1" class="frameLabel">Venue card B · image-led</div>
+  <div class="card bwp" style="box-shadow:0 4px 24px rgba(0,0,0,.08);border:1px solid #ece5d8;overflow:hidden">
+    <div style="height:128px;background:repeating-linear-gradient(135deg,#e7ddcb,#e7ddcb 9px,#ddd2bd 9px,#ddd2bd 18px);position:relative">
+      <span class="mono" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:10px;color:#9a8b72">venue photo</span>
+      <span class="lbl" style="position:absolute;top:11px;left:11px;background:rgba(255,255,255,.92);color:#3a5680">Indoor</span>
+      <span class="mono" style="position:absolute;top:11px;right:11px;background:#cf8400;color:#fff;font-size:9px;padding:3px 7px;border-radius:4px;letter-spacing:.1em;font-weight:600">↺ SWAPPED</span>
+    </div>
+    <div style="padding:14px 16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:17px;font-weight:600">Sea Life Berlin</div><span class="mono" style="font-size:10px;color:#9a9081">14:00</span></div>
+      <div class="mono" style="font-size:11px;color:#6f665b;margin:4px 0 9px">Aquarium · Mitte</div>
+      <div style="display:flex;gap:7px;border-top:1px solid #f0eadf;padding-top:9px"><span class="why">WHY</span><span style="font-size:12px;color:#544c42;line-height:1.45">Keeps the water theme without the rain.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- legend post-it -->
+<div style="position:absolute;left:80px;top:2680px;width:760px;background:#fff;border:1px solid #e6dfd3;border-radius:8px;padding:16px 20px;font-family:'Helvetica Neue',Helvetica,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.05)">
+  <div class="mono" style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9a9081;margin-bottom:12px;font-weight:600">Visual language</div>
+  <div style="display:flex;gap:26px;flex-wrap:wrap;font-size:12.5px;color:#544c42">
+    <span style="display:flex;align-items:center;gap:8px"><span class="lbl" style="background:#e8edf5;color:#3a5680">Indoor</span> cool blue</span>
+    <span style="display:flex;align-items:center;gap:8px"><span class="lbl" style="background:#e6efe7;color:#2f6b45">Outdoor</span> warm green</span>
+    <span style="display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;border-radius:3px;background:#cf8400"></span> Ochre = AI reasoning + actions</span>
+    <span style="display:flex;align-items:center;gap:8px"><span class="mono" style="color:#cf8400;font-weight:600">↺</span> weather swap</span>
+    <span style="display:flex;align-items:center;gap:8px"><span class="mono" style="color:#2f6b45;font-weight:600">✓</span> constraint met</span>
+  </div>
+</div>
+
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#f3efe8"/><rect x="30" y="30" width="40" height="40" rx="8" fill="#cf8400"/><text x="50" y="58" font-size="22" fill="#fff" text-anchor="middle" font-family="monospace" font-weight="700">B</text></svg>
+</template>
+</x-dc>
+</body>
+</html>

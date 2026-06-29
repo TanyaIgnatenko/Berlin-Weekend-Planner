@@ -1,0 +1,22 @@
+[
+  {
+    "id": "rainy-saturday",
+    "request": "Plan Saturday 2026-07-04 in Berlin, I like lakes and parks, max 2 things.",
+    "expect": { "no_outdoor_if_wet": true, "max_per_day": 2 }
+  },
+  {
+    "id": "museum-day",
+    "request": "Plan Sunday 2026-07-05, I love museums and galleries, max 3, no repeats.",
+    "expect": { "avoid_repeat_types": true, "max_per_day": 3 }
+  },
+  {
+    "id": "event-bound",
+    "request": "I want to go to the Mauerpark flea market this weekend in Berlin.",
+    "expect": { "dated_event_matches_day": true }
+  },
+  {
+    "id": "mixed-weekend",
+    "request": "Plan both 2026-07-04 and 2026-07-05, mix indoor and outdoor, max 2 per day.",
+    "expect": { "max_per_day": 2 }
+  }
+]

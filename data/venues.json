@@ -1,0 +1,21 @@
+[
+  { "name": "Pergamonmuseum", "type": "museum", "indoor": true, "area": "Mitte", "hours": "10:00-18:00", "cost": 14 },
+  { "name": "Hamburger Bahnhof", "type": "gallery", "indoor": true, "area": "Moabit", "hours": "10:00-18:00", "cost": 10 },
+  { "name": "Berlinische Galerie", "type": "gallery", "indoor": true, "area": "Kreuzberg", "hours": "10:00-18:00", "cost": 10 },
+  { "name": "Naturkundemuseum", "type": "museum", "indoor": true, "area": "Mitte", "hours": "09:30-18:00", "cost": 11 },
+  { "name": "Sea Life Berlin", "type": "aquarium", "indoor": true, "area": "Mitte", "hours": "10:00-19:00", "cost": 20 },
+  { "name": "Zoo Berlin", "type": "zoo", "indoor": false, "area": "Tiergarten", "hours": "09:00-18:00", "cost": 22 },
+  { "name": "Tierpark Berlin", "type": "zoo", "indoor": false, "area": "Friedrichsfelde", "hours": "09:00-18:30", "cost": 16 },
+  { "name": "Badeschiff", "type": "pool", "indoor": false, "area": "Treptow", "hours": "10:00-23:00", "cost": 7 },
+  { "name": "Sommerbad Kreuzberg", "type": "pool", "indoor": false, "area": "Kreuzberg", "hours": "07:00-20:00", "cost": 6 },
+  { "name": "Schlachtensee", "type": "lake", "indoor": false, "area": "Zehlendorf", "hours": "open", "cost": 0 },
+  { "name": "Weissensee", "type": "lake", "indoor": false, "area": "Weissensee", "hours": "open", "cost": 0 },
+  { "name": "Tempelhofer Feld", "type": "park", "indoor": false, "area": "Tempelhof", "hours": "open", "cost": 0 },
+  { "name": "Mauerpark", "type": "park", "indoor": false, "area": "Prenzlauer Berg", "hours": "open", "cost": 0 },
+  { "name": "Flohmarkt Mauerpark", "type": "market", "indoor": false, "area": "Prenzlauer Berg", "date": "2026-07-05", "cost": 0 },
+  { "name": "Markthalle Neun Street Food", "type": "food", "indoor": true, "area": "Kreuzberg", "date": "2026-07-04", "cost": 15 },
+  { "name": "Waldbuehne Open-Air Concert", "type": "openair", "indoor": false, "area": "Westend", "date": "2026-07-04", "cost": 55 },
+  { "name": "Freiluftkino Friedrichshain", "type": "openair", "indoor": false, "area": "Friedrichshain", "date": "2026-07-05", "cost": 9.5 },
+  { "name": "Konzerthaus Matinee", "type": "concert", "indoor": true, "area": "Mitte", "date": "2026-07-05", "cost": 25 },
+  { "name": "Gropius Bau Special Exhibition", "type": "exhibition", "indoor": true, "area": "Kreuzberg", "date": "2026-07-04", "cost": 14 }
+]

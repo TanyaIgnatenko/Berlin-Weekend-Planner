@@ -1,0 +1,14 @@
+langgraph>=0.2
+litellm>=1.40
+pydantic>=2.6
+requests>=2.31
+
+# web API (serves the frontend; wraps the graph — see src/api/ and FRONTEND.md)
+fastapi>=0.110
+uvicorn[standard]>=0.29
+sse-starlette>=2.0
+
+# observability / eval (optional — skeleton runs without these)
+arize-phoenix>=4.0
+arize-phoenix-otel>=0.6
+openinference-instrumentation-litellm>=0.1
