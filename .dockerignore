@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+web/node_modules/
+web/dist/
+eval/
+design_handoff_berlin_weekend_planner/
+.git/
+*.md
+pip-tmp/
