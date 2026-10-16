@@ -1,6 +1,7 @@
 import { AgentTimeline } from "./components/AgentTimeline";
 import { Header } from "./components/Header";
 import { Itinerary } from "./components/Itinerary";
+import { RateLimitModal } from "./components/RateLimitModal";
 import { RequestInput } from "./components/RequestInput";
 import { usePlanner } from "./hooks/usePlanner";
 
@@ -44,6 +45,10 @@ export default function App() {
         <div className="error-toast mono" role="alert">
           {p.error}
         </div>
+      )}
+
+      {p.rateLimit && (
+        <RateLimitModal message={p.rateLimit} onClose={p.dismissRateLimit} />
       )}
     </div>
   );

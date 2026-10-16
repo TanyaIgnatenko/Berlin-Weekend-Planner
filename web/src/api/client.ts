@@ -9,6 +9,24 @@
 
 const BASE = "/api";
 
+/** Thrown when the backend returns 429 (demo rate limit). Carries the server's
+ *  human-readable message so the UI can show a clear modal. */
+export class RateLimitError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "RateLimitError";
+  }
+}
+
+async function throwIfRateLimited(res: Response): Promise<void> {
+  if (res.status === 429) {
+    const body = await res.json().catch(() => ({}));
+    throw new RateLimitError(
+      body.detail || "You've reached the demo request limit — please try again later.",
+    );
+  }
+}
+
 /* ----------------------------- types ----------------------------- */
 export interface Venue {
   name: string;
@@ -113,6 +131,7 @@ export async function streamPlan(
     body: JSON.stringify(input),
     signal,
   });
+  await throwIfRateLimited(res);
   if (!res.ok || !res.body) throw new Error(`plan ${res.status}`);
 
   const reader = res.body.getReader();
@@ -163,6 +182,7 @@ export async function refine(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(input),
   });
+  await throwIfRateLimited(r);
   if (!r.ok) throw new Error(`refine ${r.status}`);
   return r.json();
 }

@@ -793,6 +793,52 @@
   line-height: 1.45;
 }
 
+/* rate-limit modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 23, 20, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+}
+.modal-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 26px 24px;
+  max-width: 420px;
+  width: 100%;
+}
+.modal-kicker {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--accent-ink);
+}
+.modal-title {
+  font-size: 21px;
+  letter-spacing: -0.4px;
+  line-height: 1.15;
+  margin: 10px 0 12px;
+}
+.modal-body {
+  font-size: 15px;
+  color: var(--ink-900);
+  margin: 0 0 12px;
+}
+.modal-note {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-500);
+  margin: 0 0 22px;
+}
+.modal-btn {
+  width: 100%;
+}
+
 /* error toast */
 .error-toast {
   position: fixed;

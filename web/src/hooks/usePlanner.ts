@@ -6,6 +6,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   getConfig,
+  RateLimitError,
   refine as apiRefine,
   streamPlan,
   type AppConfig,
@@ -32,6 +33,7 @@ export function usePlanner() {
   const [messages, setMessages] = useState<RefineMessage[]>([]);
   const [replanning, setReplanning] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [rateLimit, setRateLimit] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -80,6 +82,12 @@ export function usePlanner() {
         );
       } catch (e) {
         if ((e as Error).name === "AbortError") return;
+        if (e instanceof RateLimitError) {
+          // demo cap hit — show the modal, don't fake a plan
+          setRateLimit(e.message);
+          setPhase("input");
+          return;
+        }
         // graceful offline fallback so the UI is never dead
         setError((e as Error).message);
         setPlan(FALLBACK_PLAN);
@@ -104,6 +112,10 @@ export function usePlanner() {
         setPlan(res.plan);
         setMessages((m) => [...m, { role: "agent", text: res.reply }]);
       } catch (e) {
+        if (e instanceof RateLimitError) {
+          setRateLimit(e.message);
+          return;
+        }
         setMessages((m) => [
           ...m,
           { role: "agent", text: `Sorry — refine failed (${(e as Error).message}).` },
@@ -137,6 +149,8 @@ export function usePlanner() {
     messages,
     replanning,
     error,
+    rateLimit,
+    dismissRateLimit: () => setRateLimit(null),
     submit,
     sendRefine,
     startOver,
