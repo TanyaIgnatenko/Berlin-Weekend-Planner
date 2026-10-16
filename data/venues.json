@@ -12,10 +12,10 @@
   { "name": "Weissensee", "type": "lake", "indoor": false, "area": "Weissensee", "hours": "open", "cost": 0 },
   { "name": "Tempelhofer Feld", "type": "park", "indoor": false, "area": "Tempelhof", "hours": "open", "cost": 0 },
   { "name": "Mauerpark", "type": "park", "indoor": false, "area": "Prenzlauer Berg", "hours": "open", "cost": 0 },
-  { "name": "Flohmarkt Mauerpark", "type": "market", "indoor": false, "area": "Prenzlauer Berg", "date": "2026-07-05", "cost": 0 },
-  { "name": "Markthalle Neun Street Food", "type": "food", "indoor": true, "area": "Kreuzberg", "date": "2026-07-04", "cost": 15 },
-  { "name": "Waldbuehne Open-Air Concert", "type": "openair", "indoor": false, "area": "Westend", "date": "2026-07-04", "cost": 55 },
-  { "name": "Freiluftkino Friedrichshain", "type": "openair", "indoor": false, "area": "Friedrichshain", "date": "2026-07-05", "cost": 9.5 },
-  { "name": "Konzerthaus Matinee", "type": "concert", "indoor": true, "area": "Mitte", "date": "2026-07-05", "cost": 25 },
-  { "name": "Gropius Bau Special Exhibition", "type": "exhibition", "indoor": true, "area": "Kreuzberg", "date": "2026-07-04", "cost": 14 }
+  { "name": "Flohmarkt Mauerpark", "type": "market", "indoor": false, "area": "Prenzlauer Berg", "hours": "10:00-18:00", "cost": 0 },
+  { "name": "Markthalle Neun Street Food", "type": "food", "indoor": true, "area": "Kreuzberg", "hours": "12:00-22:00", "cost": 15 },
+  { "name": "Waldbuehne Open-Air", "type": "openair", "indoor": false, "area": "Westend", "hours": "19:00-23:00", "cost": 55 },
+  { "name": "Freiluftkino Friedrichshain", "type": "openair", "indoor": false, "area": "Friedrichshain", "hours": "21:00-23:30", "cost": 9.5 },
+  { "name": "Konzerthaus Matinee", "type": "concert", "indoor": true, "area": "Mitte", "hours": "11:00-13:00", "cost": 25 },
+  { "name": "Gropius Bau", "type": "exhibition", "indoor": true, "area": "Kreuzberg", "hours": "10:00-19:00", "cost": 14 }
 ]
