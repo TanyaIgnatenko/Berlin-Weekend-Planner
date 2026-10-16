@@ -15,6 +15,11 @@ import os
 
 import litellm
 
+# Let LiteLLM silently drop params a given model doesn't support, so one call
+# path works across models (e.g. claude-sonnet-5 only allows temperature=1 and
+# rejects our 0.2 — it gets dropped there, kept for models that accept it).
+litellm.drop_params = True
+
 # Strong model for reasoning (ReAct + plan); small model for cheap extraction.
 PLANNER_MODEL = os.getenv("PLANNER_MODEL", "anthropic/claude-sonnet-5")
 EXTRACTOR_MODEL = os.getenv("EXTRACTOR_MODEL", "anthropic/claude-haiku-4-5")
