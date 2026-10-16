@@ -26,7 +26,13 @@ MAX_REPLANS = 3
 # 1. parse_request : free text -> PlanRequest                                  #
 # --------------------------------------------------------------------------- #
 def parse_request(state: PlannerState) -> PlannerState:
-    sys = ("Extract a Berlin weekend plan request. Fields: dates (ISO), "
+    from datetime import date
+    today = date.today()
+    sys = (f"Today is {today.isoformat()} ({today.strftime('%A')}). "
+           "Extract a Berlin weekend plan request. Resolve any relative dates "
+           "('this weekend', 'next Saturday', 'coming Sunday') to absolute ISO "
+           "dates using today's date. If no dates are given, default to the "
+           "upcoming Saturday and Sunday. Fields: dates (ISO), "
            f"liked_types and disliked_types (from {all_types()}), "
            "preferred_areas, max_per_day (int), avoid_repeat_types (bool), notes.")
     # TODO: harden the prompt / add few-shot examples for messy inputs.

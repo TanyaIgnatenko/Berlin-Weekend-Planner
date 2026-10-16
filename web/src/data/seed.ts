@@ -15,7 +15,7 @@ export interface Chip {
 }
 
 export const DEFAULT_CHIPS: Chip[] = [
-  { id: "dates", label: "Sat–Sun 4–5 Jul", on: true },
+  { id: "dates", label: "This weekend", on: true },
   { id: "mitte", label: "Mitte", on: true },
   { id: "kreuzberg", label: "Kreuzberg", on: false },
   { id: "treptow", label: "Treptow", on: false },
@@ -25,12 +25,12 @@ export const DEFAULT_CHIPS: Chip[] = [
 ];
 
 export const EXAMPLE_PROMPTS = [
-  "Plan my Saturday 4 July 2026 — I like museums and lakes, max 3 things, avoid repeats",
+  "Plan my weekend this Saturday–Sunday — I like museums and lakes, max 3 things, avoid repeats",
   "A rainy-day Berlin weekend, mostly indoor, with one open-air evening",
 ];
 
 export const PLACEHOLDER =
-  "Plan my Saturday 4 July 2026 — I like museums and lakes, max 3 things, avoid repeats…";
+  "Plan my weekend this Saturday–Sunday — I like museums and lakes, max 3 things, avoid repeats…";
 
 /** Mirror of the backend seed scenario, for offline fallback only. */
 export const FALLBACK_PLAN: Plan = {

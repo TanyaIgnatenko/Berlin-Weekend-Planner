@@ -5,7 +5,7 @@ ReAct) uses the strong model; cheap structured extraction uses the small one.
 Set the model strings to whatever your provider supports, and export the key:
     export ANTHROPIC_API_KEY=...      # or OPENAI_API_KEY, etc.
 
-LiteLLM model-string examples: "anthropic/claude-sonnet-4-5",
+LiteLLM model-string examples: "anthropic/claude-sonnet-5",
 "anthropic/claude-haiku-4-5", "openai/gpt-4o-mini". Adjust to your account.
 """
 from __future__ import annotations
@@ -15,7 +15,8 @@ import os
 
 import litellm
 
-PLANNER_MODEL = os.getenv("PLANNER_MODEL", "anthropic/claude-sonnet-4-5")
+# Strong model for reasoning (ReAct + plan); small model for cheap extraction.
+PLANNER_MODEL = os.getenv("PLANNER_MODEL", "anthropic/claude-sonnet-5")
 EXTRACTOR_MODEL = os.getenv("EXTRACTOR_MODEL", "anthropic/claude-haiku-4-5")
 
 

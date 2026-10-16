@@ -25,8 +25,9 @@ COPY data/ ./data/
 # app.py resolves web/dist relative to the repo root (parents[2]) -> /app/web/dist
 COPY --from=web /web/dist ./web/dist
 
-# default to the keyless demo scenario; override in Railway for real planning
-ENV PLANNER_SEED_MODE=1
+# Mode is decided at runtime: set ANTHROPIC_API_KEY (e.g. in Railway) -> real
+# agent; leave it unset -> automatic seed-mode fallback (keyless demo). Force
+# the demo regardless of key with PLANNER_SEED_MODE=1.
 EXPOSE 8000
 
 # Railway injects $PORT; fall back to 8000 locally

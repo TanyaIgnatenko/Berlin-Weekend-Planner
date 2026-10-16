@@ -21,9 +21,10 @@ import asyncio
 import json
 import os
 import threading
+import time
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -51,6 +52,48 @@ def seed_mode() -> bool:
 
 
 # --------------------------------------------------------------------------- #
+# cost guard — simple in-memory rate limit on the paid (real-mode) endpoints. #
+# Real mode spends tokens per request on a public endpoint, so cap abuse:      #
+# per-IP sliding window + a global daily ceiling. Seed mode is free -> skip.   #
+# Single-instance in-memory state is fine for this deploy; swap for Redis if   #
+# you ever run multiple replicas. All limits are env-tunable.                  #
+# --------------------------------------------------------------------------- #
+_RATE_MAX = int(os.getenv("RATE_LIMIT_MAX", "10"))             # requests / window / IP
+_RATE_WINDOW = int(os.getenv("RATE_LIMIT_WINDOW_SEC", "3600"))  # 1 hour
+_GLOBAL_DAILY_MAX = int(os.getenv("RATE_LIMIT_GLOBAL_DAILY", "50"))  # whole service / day
+_hits: dict[str, list[float]] = {}
+_global_hits: list[float] = []
+
+
+def _client_ip(request: Request) -> str:
+    xff = request.headers.get("x-forwarded-for")  # set by Railway/Vercel proxy
+    if xff:
+        return xff.split(",")[0].strip()
+    return request.client.host if request.client else "unknown"
+
+
+def rate_limit(request: Request) -> None:
+    """Raise 429 when a caller (or the whole service) is over budget."""
+    if seed_mode():
+        return  # seed mode makes no paid calls
+    now = time.time()
+
+    global _global_hits
+    _global_hits = [t for t in _global_hits if now - t < 86400]
+    if len(_global_hits) >= _GLOBAL_DAILY_MAX:
+        raise HTTPException(429, "Daily demo limit reached — try again tomorrow.")
+
+    ip = _client_ip(request)
+    hits = [t for t in _hits.get(ip, []) if now - t < _RATE_WINDOW]
+    if len(hits) >= _RATE_MAX:
+        raise HTTPException(429, "Too many requests — please wait a minute and retry.")
+
+    hits.append(now)
+    _hits[ip] = hits
+    _global_hits.append(now)
+
+
+# --------------------------------------------------------------------------- #
 # request models                                                              #
 # --------------------------------------------------------------------------- #
 class PlanBody(BaseModel):
@@ -69,7 +112,7 @@ def _augment(request: str, preferences: list[str]) -> str:
     req = (request or "").strip()
     if preferences:
         req += "\nPreferences: " + ", ".join(preferences)
-    return req or ("Plan my weekend 4–5 July 2026. I like museums and lakes, "
+    return req or ("Plan my coming weekend in Berlin. I like museums and lakes, "
                    "max 3 things per day, no repeated types.")
 
 
@@ -87,7 +130,7 @@ def config() -> dict:
 
 
 @app.post("/api/plan")
-async def plan(body: PlanBody):
+async def plan(body: PlanBody, _: None = Depends(rate_limit)):
     """Stream timeline steps as the agent works, then the final itinerary."""
     request_text = _augment(body.request, body.preferences)
 
@@ -145,7 +188,7 @@ async def plan(body: PlanBody):
 
 
 @app.post("/api/refine")
-async def refine(body: RefineBody) -> dict:
+async def refine(body: RefineBody, _: None = Depends(rate_limit)) -> dict:
     """Apply a natural-language refine and return {reply, plan}."""
     if seed_mode():
         base = body.plan or seedmod.seed_plan()

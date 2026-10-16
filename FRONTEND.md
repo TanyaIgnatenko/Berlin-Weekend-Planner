@@ -62,6 +62,22 @@ Seed/fallback data lives only in `src/api/seed.py` (backend) and
 `web/src/data/seed.ts` (offline UI fallback) — it is never merged into a real
 response.
 
+### Enabling real mode in production (e.g. Railway)
+Set **`ANTHROPIC_API_KEY`** on the service — that alone flips it to real mode
+(the Dockerfile no longer forces seed). Leaving the key unset keeps the keyless
+seed demo as an automatic fallback. Requests resolve relative dates ("this
+weekend") against the server's today, so live Open-Meteo weather works without
+hardcoded dates.
+
+Real mode spends tokens per request on a public endpoint, so it's rate-limited
+(`src/api/app.py: rate_limit`): per-IP sliding window + a global daily ceiling,
+returning HTTP 429 when exceeded. Seed mode is free and skips the limit. Tunable
+via env: `RATE_LIMIT_MAX` (default 10 per IP), `RATE_LIMIT_WINDOW_SEC` (3600 =
+1 h), `RATE_LIMIT_GLOBAL_DAILY` (50 for the whole service). Visitors need no key
+of their own — the single server-side `ANTHROPIC_API_KEY` serves everyone, and
+these limits keep the owner's token spend bounded. Model defaults: `PLANNER_MODEL`
+(`anthropic/claude-sonnet-5`) and `EXTRACTOR_MODEL` (`anthropic/claude-haiku-4-5`).
+
 ## Endpoints the frontend calls
 
 All under `/api`, defined in `src/api/app.py`. **These were added for the
