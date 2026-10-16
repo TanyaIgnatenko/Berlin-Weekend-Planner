@@ -205,9 +205,12 @@ def build_timeline(state: dict) -> list[dict]:
         steps.append({"key": "gather", "title": "Gathering options",
                       "detail": f"{len(searches)} searches → {n} candidate venues"})
 
-    n_stops = len(state.get("plan", []) or [])
-    steps.append({"key": "plan", "title": "Building the schedule",
-                  "detail": f"{n_stops} stops sequenced across the weekend"})
+    # only after the plan node has actually run, so the streamed step order is
+    # parse -> weather -> reason -> gather -> plan -> validate (not emitted early)
+    if "plan" in state:
+        n_stops = len(state.get("plan", []) or [])
+        steps.append({"key": "plan", "title": "Building the schedule",
+                      "detail": f"{n_stops} stops sequenced across the weekend"})
 
     viol = validation.get("violations", []) or []
     if validation:
