@@ -37,8 +37,10 @@ def parse_request(state: PlannerState) -> PlannerState:
            "preferred_areas, max_per_day (int), avoid_repeat_types (bool), notes.")
     # TODO: harden the prompt / add few-shot examples for messy inputs.
     data = llm_json(f"User request:\n{state['request']}", system=sys, heavy=False)
+    # Drop null/absent fields so the LLM returning e.g. max_per_day=null falls
+    # back to the schema default instead of failing int validation.
     spec = PlanRequest(**{k: v for k, v in data.items()
-                          if k in PlanRequest.model_fields})
+                          if k in PlanRequest.model_fields and v is not None})
     return {"spec": spec.model_dump(), "iterations": 0, "weather": {},
             "candidates": [], "react_log": []}
 
